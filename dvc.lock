@@ -38,8 +38,8 @@ stages:
         audio_&_feature:
           sampling_rate: 22050
           axis: 0
-          n_mfcc: 13
-          n_mels: 13
+          n_mfcc: 40
+          n_mels: 40
           fmax: 4000
           n_chroma: 36
         feature_extraction:
@@ -53,14 +53,14 @@ stages:
           processed_audio_neg: data/preprocessed/pre_cohort_1_neg.npy
     outs:
     - path: data/features/covid_features.csv
-      md5: ee8c3da49bbfd5f4a9a5243dc002e8df
-      size: 4858875
+      md5: 5c63d9686e471d83a22502e7e728bbe7
+      size: 6594926
   data_split:
     cmd: python src/data_split.py --config=params.yaml
     deps:
     - path: data/features/covid_features.csv
-      md5: ee8c3da49bbfd5f4a9a5243dc002e8df
-      size: 4858875
+      md5: 5c63d9686e471d83a22502e7e728bbe7
+      size: 6594926
     - path: src/data_split.py
       md5: fbd5e21768c9c6a8e4cbc3a9295977d1
       size: 956
@@ -77,20 +77,20 @@ stages:
           target_column: status
     outs:
     - path: data/features/test.csv
-      md5: e742d73192806d0f48d784313954abd3
-      size: 970543
+      md5: deb584f6908f922e66571a63076a4aa4
+      size: 1318675
     - path: data/features/train.csv
-      md5: 15ca4f661e38d843e11c5cac96e71d09
-      size: 3869670
+      md5: eb42e6e26fbafb0dc218d6740d9a50da
+      size: 5258048
   train:
     cmd: python src/train_and_evaluate.py --config=params.yaml
     deps:
     - path: data/features/test.csv
-      md5: e742d73192806d0f48d784313954abd3
-      size: 970543
+      md5: deb584f6908f922e66571a63076a4aa4
+      size: 1318675
     - path: data/features/train.csv
-      md5: 15ca4f661e38d843e11c5cac96e71d09
-      size: 3869670
+      md5: eb42e6e26fbafb0dc218d6740d9a50da
+      size: 5258048
     - path: src/train_and_evaluate.py
       md5: a5e44347cad2a954462081f059860df1
       size: 3481
@@ -112,11 +112,11 @@ stages:
           model_path: models/xgb_models.joblib
     outs:
     - path: models/xgb_models.joblib
-      md5: 614c61239d383f363e54df0be17417c9
-      size: 9426656
+      md5: dd9a20f5e7a242f4f56131511359fe97
+      size: 8773824
     - path: reports/confusion_matrix.png
-      md5: 268c930decb41b3ecc6b934d03e7f66c
-      size: 24608
+      md5: f0b625c49ffd97f5c2cea522ffd2e144
+      size: 24593
     - path: reports/metrics.json
-      md5: 7ef96691857253a444b4b6aa3f6e6ab5
+      md5: 0d00ad1739a2ab4f7a45ef35dfdd3e6e
       size: 32
