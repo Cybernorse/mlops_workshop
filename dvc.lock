@@ -112,10 +112,10 @@ stages:
           model_path: models/xgb_models.joblib
     outs:
     - path: models/xgb_models.joblib
-      md5: 1915e5ea0d3a5f24c9fb246d66b94989
-      size: 480848
+      md5: 90bd9f2167583e37317320a83b222bc9
+      size: 476217
     - path: reports/confusion_matrix.png
-      md5: 5c30ef639b7de1d2aefe1c63dca3a655
+      md5: 5eeed2fb240ac951ea2eada347cd85cd
       size: 24171
     - path: reports/metrics.json
       md5: 77022fff0c93037ab35863c214f7d554
