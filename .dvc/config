@@ -2,6 +2,3 @@
     remote = gdrive_store
 ['remote "gdrive_store"']
     url = gdrive://1IwEY4Yxu-7QWMZkamVsejtOi5MOmIUfD
-
-
-
